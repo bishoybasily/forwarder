@@ -27,6 +27,7 @@ public class Main {
 
     static {
         JSch.setConfig("StrictHostKeyChecking", "no");
+        JSch.setLogger(new JSchLogger(log));
     }
 
     public static void main(String[] args) {
