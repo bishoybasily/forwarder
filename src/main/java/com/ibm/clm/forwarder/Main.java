@@ -23,16 +23,17 @@ public class Main {
     private final static String
             HOST = "localhost",
             PARAM_PASSWORD = "p",
-            PARAM_RULE = "r";
+            PARAM_RULE = "r",
+            PARAM_VERBOSE = "v";
 
     static {
         JSch.setConfig("StrictHostKeyChecking", "no");
-        JSch.setLogger(new JSchLogger(log));
     }
 
     public static void main(String[] args) {
 
         Options options = new Options()
+                .addOption(PARAM_VERBOSE, "verbose", false, "enable jsch logging")
                 .addRequiredOption(PARAM_PASSWORD, "password", true, "the password of the current user")
                 .addRequiredOption(PARAM_RULE, "rule", true, "mapping rule in the form of binding_address:binding_port:remote_address:remote_port (accepts multiple values)");
 
@@ -43,6 +44,10 @@ public class Main {
 
             String password = commandLine.getOptionValue(PARAM_PASSWORD);
             String[] rules = commandLine.getOptionValues(PARAM_RULE);
+            Boolean verbose = commandLine.hasOption(PARAM_VERBOSE);
+
+            if (verbose)
+                JSch.setLogger(new JSchLogger(log));
 
             Map<Rule, Session> mappings = initMappings(password, rules);
 
