@@ -50,7 +50,7 @@ public class Main {
             if (verbose)
                 JSch.setLogger(new JSchLogger(log));
 
-            Map<Rule, Session> mappings = initMappings(password, rules);
+            Map<Rule, Session> mappings = createMappings(password, rules);
 
             Runtime.getRuntime().addShutdownHook(new Thread(() -> {
                 destroyMappings(mappings);
@@ -63,7 +63,7 @@ public class Main {
 
     }
 
-    private static Map<Rule, Session> initMappings(String password, String[] rules) {
+    private static Map<Rule, Session> createMappings(String password, String[] rules) {
 
         JSch jSch = new JSch();
 
