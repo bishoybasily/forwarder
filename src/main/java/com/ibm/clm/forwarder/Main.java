@@ -6,6 +6,7 @@ import lombok.SneakyThrows;
 import lombok.extern.log4j.Log4j2;
 import org.apache.commons.cli.*;
 
+import java.io.File;
 import java.util.AbstractMap;
 import java.util.Map;
 import java.util.function.BiConsumer;
@@ -57,7 +58,7 @@ public class Main {
 
         } catch (ParseException e) {
             HelpFormatter formatter = new HelpFormatter();
-            formatter.printHelp("java -jar forwarder.jar", options);
+            formatter.printHelp(String.format("java -jar %s", jarName()), options);
         }
 
     }
@@ -110,6 +111,14 @@ public class Main {
 
             }
         });
+    }
+
+    private static String jarName() {
+        return new File(Main.class.getProtectionDomain()
+                .getCodeSource()
+                .getLocation()
+                .getPath())
+                .getName();
     }
 
 }
