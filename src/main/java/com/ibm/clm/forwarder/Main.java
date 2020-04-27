@@ -44,7 +44,7 @@ public class Main {
 
             String password = commandLine.getOptionValue(PARAM_PASSWORD);
             String[] rules = commandLine.getOptionValues(PARAM_RULE);
-            Boolean verbose = commandLine.hasOption(PARAM_VERBOSE);
+            boolean verbose = commandLine.hasOption(PARAM_VERBOSE);
 
             if (verbose)
                 JSch.setLogger(new JSchLogger(log));
