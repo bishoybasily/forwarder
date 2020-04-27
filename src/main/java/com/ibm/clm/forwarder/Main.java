@@ -52,9 +52,7 @@ public class Main {
 
             Map<Rule, Session> mappings = createMappings(password, rules);
 
-            Runtime.getRuntime().addShutdownHook(new Thread(() -> {
-                destroyMappings(mappings);
-            }));
+            Runtime.getRuntime().addShutdownHook(new Thread(() -> destroyMappings(mappings)));
 
         } catch (ParseException e) {
             HelpFormatter formatter = new HelpFormatter();
