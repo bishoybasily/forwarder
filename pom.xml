@@ -14,7 +14,7 @@
         <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
         <commons-cli.version>1.4</commons-cli.version>
         <lombok.version>1.18.12</lombok.version>
-        <log4j.version>2.13.0</log4j.version>
+        <log4j.version>2.15.0</log4j.version>
     </properties>
 
     <dependencies>
